@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi baúl</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA LATERAL: aquí van tus categorías y lo que hay dentro -->
+  <aside class="lateral">
+    <input id="buscar" type="search" placeholder="Buscar" aria-label="Buscar">
+
+    <section>
+      <h2>Fotos <span>(3)</span></h2>
+      <ul>
+        <!-- Cada <li> es un recuerdo. Cambia el texto y el enlace -->
+        <li><a href="paginas/foto1.html">Mi primer viaje</a></li>
+        <li><a href="paginas/foto2.html">Atardecer en Coronel</a></li>
+        <li><a href="paginas/foto3.html">Mi gato</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Proyectos <span>(2)</span></h2>
+      <ul>
+        <li><a href="paginas/proyecto1.html">Mi primera web</a></li>
+        <li><a href="paginas/proyecto2.html">Un dibujo</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Escritos <span>(1)</span></h2>
+      <ul>
+        <li><a href="paginas/escrito1.html">Una carta</a></li>
+      </ul>
+    </section>
+  </aside>
+
+  <!-- ESCENARIO: objetos sueltos en el centro, como en geokash.com -->
+  <main class="escenario">
+    <!-- Cuando tengas fotos con fondo transparente (PNG), reemplaza cada
+         <span class="cosa ..."> por: <img class="cosa" src="fotos/nombre.png" alt="..."> -->
+    <a class="cosa grande"  style="--x:30%; --y:22%;" href="paginas/proyecto1.html" aria-label="Mi primera web"></a>
+    <a class="cosa redonda" style="--x:18%; --y:62%;" href="paginas/foto1.html" aria-label="Mi primer viaje"></a>
+    <a class="cosa estrella" style="--x:62%; --y:30%;" href="paginas/foto2.html" aria-label="Atardecer"></a>
+    <a class="cosa redonda" style="--x:72%; --y:68%;" href="paginas/foto3.html" aria-label="Mi gato"></a>
+  </main>
+
+  <footer class="pie">
+    <a href="paginas/sorpresa.html" class="sorpresa">Página sorpresa</a>
+  </footer>
+
+  <script>
+    // Buscador: oculta los recuerdos que no coinciden
+    document.getElementById('buscar').addEventListener('input', function (e) {
+      var q = e.target.value.toLowerCase();
+      document.querySelectorAll('.lateral li').forEach(function (li) {
+        li.hidden = !li.textContent.toLowerCase().includes(q);
+      });
+    });
+  </script>
+</body>
+</html>
