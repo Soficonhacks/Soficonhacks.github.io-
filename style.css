@@ -110,3 +110,13 @@ img.cosa { object-fit: contain; width: auto; height: auto; max-width: 220px; max
 @media (prefers-reduced-motion: reduce) {
   .cosa { transition: none; }
 }
+
+.cosa.cara-gato {
+  width: 220px;
+  height: auto;
+}
+.cosa.cara-gato img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
