@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matcha</title>
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fondo: #d9e8c4;
+      --matcha: #8fae6b;
+      --matcha-oscuro: #4d6b3a;
+      --crema: #fbf7ec;
+      --tinta: #2f3b24;
+      --linea: #2f3b24;
+    }
+
+    body {
+      display: block;
+      height: auto;
+      min-height: 100vh;
+      padding: 28px 20px 60px;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,.45) 0 80px, transparent 81px),
+        radial-gradient(circle at 90% 30%, rgba(143,174,107,.35) 0 120px, transparent 121px),
+        radial-gradient(circle at 20% 85%, rgba(143,174,107,.3) 0 90px, transparent 91px),
+        var(--fondo);
+    }
+
+    .contenedor { max-width: 980px; margin: 0 auto; }
+    a { color: inherit; }
+
+    header { margin: 12px 0 40px; }
+    header h1 {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(48px, 9vw, 84px);
+      font-weight: 700;
+      line-height: 1;
+      margin: 18px 0 8px;
+      color: var(--matcha-oscuro);
+    }
+    header p { margin: 0; max-width: 46ch; line-height: 1.6; }
+
+    /* ---------- Tarjetas ---------- */
+    .tablero {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 44px 32px;
+      align-items: start;
+    }
+
+    .tarjeta {
+      position: relative;
+      background: var(--crema);
+      padding: 14px 14px 20px;
+      box-shadow: 0 6px 0 rgba(77,107,58,.18), 0 10px 22px rgba(47,59,36,.18);
+      border-radius: 6px;
+      transition: transform .25s ease;
+    }
+    .tarjeta:nth-child(odd)  { transform: rotate(-1.6deg); }
+    .tarjeta:nth-child(even) { transform: rotate(1.4deg); }
+    .tarjeta:nth-child(3n)   { transform: rotate(-.6deg); }
+    .tarjeta:hover { transform: rotate(0) translateY(-4px); }
+
+    /* cinta adhesiva */
+    .tarjeta::before {
+      content: "";
+      position: absolute;
+      top: -14px; left: 50%;
+      width: 88px; height: 26px;
+      transform: translateX(-50%) rotate(-3deg);
+      background: rgba(143,174,107,.55);
+      border-left: 2px dashed rgba(255,255,255,.6);
+      border-right: 2px dashed rgba(255,255,255,.6);
+    }
+
+    .foto {
+      aspect-ratio: 1;
+      background: var(--matcha);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin: 14px 0 8px;
+      font-size: 12px;
+    }
+    .fecha { opacity: .75; }
+
+    .etiqueta {
+      padding: 3px 12px;
+      border-radius: 999px;
+      border: 1.5px solid var(--matcha-oscuro);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .etiqueta.muy-rico { background: var(--matcha); }
+    .etiqueta.rico { background: #cfe0b4; }
+    .etiqueta.mas-o-menos { background: #f3e7b8; border-color: #8a7a2e; }
+    .etiqueta.no-volveria { background: #f2cfc6; border-color: #8a4a3a; }
+
+    .lugar {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+    .lugar::before { content: "☘ "; color: var(--matcha-oscuro); }
+
+    .nota {
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      line-height: 1.25;
+      margin: 0;
+      color: var(--matcha-oscuro);
+    }
+
+    .pie {
+      margin-top: 56px;
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: var(--matcha-oscuro);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tarjeta { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+
+    <header>
+      <a href="../index.html">← Volver</a>
+      <h1>Matcha</h1>
+      <p>Mi pequeña motivación. Cada matcha que me tomo, dónde fue y qué me pareció.</p>
+    </header>
+
+    <!--
+      CÓMO AGREGAR UN MATCHA NUEVO:
+      1. Copia una <article class="tarjeta"> completa (desde <article hasta </article>).
+      2. Pégala justo debajo de <section class="tablero"> para que quede la primera.
+      3. Cambia la foto, la fecha, el lugar, la etiqueta y la nota.
+      Etiquetas disponibles (cambia la clase y el texto):
+        muy-rico · rico · mas-o-menos · no-volveria
+      Las fotos van en una carpeta llamada "matcha" (matcha/matcha1.jpg).
+    -->
+
+    <section class="tablero">
+
+      <article class="tarjeta">
+        <div class="foto"><img src="../matcha/matcha1.jpg" alt="Mi matcha de hoy"></div>
+        <div class="fila">
+          <span class="fecha">21 oct 2026</span>
+          <span class="etiqueta muy-rico">muy rico</span>
+        </div>
+        <p class="lugar">Nombre del lugar</p>
+        <p class="nota">Hoy me siento bastante bien. Me fui a tomar un matcha porque tengo que estudiar y es mi pequeña motivación.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="foto"><img src="../matcha/matcha2.jpg" alt="Otro matcha"></div>
+        <div class="fila">
+          <span class="fecha">15 oct 2026</span>
+          <span class="etiqueta rico">rico</span>
+        </div>
+        <p class="lugar">Otro lugar</p>
+        <p class="nota">Cremoso y no muy dulce. Me lo tomé caminando.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="foto"><img src="../matcha/matcha3.jpg" alt="Un matcha más"></div>
+        <div class="fila">
+          <span class="fecha">3 oct 2026</span>
+          <span class="etiqueta mas-o-menos">más o menos</span>
+        </div>
+        <p class="lugar">Un tercer lugar</p>
+        <p class="nota">Estaba un poco amargo, pero el lugar era lindo.</p>
+      </article>
+
+    </section>
+
+    <p class="pie">quedan muchos matchas por tomar ☘</p>
+  </div>
+</body>
+</html>
